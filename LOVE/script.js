@@ -4,12 +4,19 @@ const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
 
-xhr.addEventListener('readystatechange', function () {
+xhr.addEventListener('readystatechange', function (){
 	if (this.readyState === this.DONE) {
 		
         let resultado = JSON.parse(this.response)
         console.log(resultado)
-	}
+        console.log(resultado.percentage)
+
+        const resultDiv = document.getElementById("app")
+        
+        const contenido = `<p> El amor entre ${resultado.fname} y ${resultado.sname} es del ${resultado.percentage}%</p>` 
+
+        resultDiv.innerHTML = contenido;
+        }
 });
 document.getElementById("añadir").addEventListener('click',function(){
      
